@@ -1,30 +1,29 @@
-const extend = select => new Proxy(select, {
-  get(_, property) {
-    return extend(target => {
-      const value = target[property];
-      return (typeof value === "function") ? value.bind(target) : value;
-    });
-  },
-  apply(_, self, args) {
-    return select(args[0]);
-  }
-});
+function getBound(object, property) {
+  const value = object[property];
+  return (typeof value === "function") ? value.bind(object) : value;
+}
 
-// wrap function with a version that further composes
-// de-lambda proxy when called on a de-lambda proxy object
-// and calls through when given other type
+function extend(select) {
+  const handler = {
+    get(f, property, _2) {
+      return extend(arg => getBound(f(arg), property));
+    },
+    apply(f, _1, args) {
+      // TODO: if any args are the root delambda proxy, make new
+      //       selector that partially applies inner function
+      const wildcardIndices = args
+        .map((x, i) => (x === $) ? i : undefined)
+        .filter(x => x !== undefined);
+      if (wildcardIndices.length > 0) {
+        // TODO: take arg(s) here and put in place of wildcard
+        //       values in args from outer scope
+        console.log("partial application time: " + wildcardIndices);
+        return extend(arg => "composed proxy goes here");
+      }
+      return f(...args);
+    }
+  };
+  return new Proxy(select, handler);
+}
 
-// ^^^ this is so you can write ($.f(0)) and it's equivalent
-// to (x => x.f(0))
-
-// need a way to make ($.func($)) translate to
-// ((x, y) => x.f(y))
-
-// need some way to track left-to-right order of $
-// instances so we know argument order?
-
-// need $._1, $._2 etc so we can specify arg indicies?
-
-// $(...) so we can have deferred values?
-
-const $ = extend(x => x);
+var $ = extend(x => x);

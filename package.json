@@ -2,9 +2,8 @@
   "name": "delambda",
   "version": "0.1.0",
   "description": "Replace trivial lambdas with notation based on ES6 Proxies",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -19,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/rkoeninger/delambda/issues"
   },
-  "homepage": "https://github.com/rkoeninger/delambda#readme"
+  "homepage": "https://github.com/rkoeninger/delambda#readme",
+  "main": "index.js",
+  "devDependencies": {
+    "jasmine": "^3.3.0"
+  }
 }
