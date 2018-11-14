@@ -2,11 +2,13 @@ const $ = require("../delambda");
 
 describe("delambda", () => {
   it("single property accessor", () => {
-    const xs = [{ p: 1 }, { p: 2 }, { p: 3 }];
-    expect(xs.map($.p)).toEqual([1, 2, 3]);
+    const p = x => ({ p: x });
+    const xs = [1, 2, 3];
+    expect(xs.map(p).map($.p)).toEqual(xs);
   });
   it("nested property accessor", () => {
-    const xs = [{ p: { q: 1 } }, { p: { q: 2 } }, { p: { q: 3 } }];
-    expect(xs.map($.p.q)).toEqual([1, 2, 3]);
+    const pq = x => ({ p: { q: x } });
+    const xs = [1, 2, 3];
+    expect(xs.map(pq).map($.p.q)).toEqual(xs);
   });
 });
