@@ -2,7 +2,7 @@
 
 # De-Lambda
 
-> De-lambda your JavaScript with ES6 Proxies
+> De-lambda your JavaScript with ES6 Proxies!
 
 ## Examples
 
