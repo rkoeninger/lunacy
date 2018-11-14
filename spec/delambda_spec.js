@@ -11,4 +11,9 @@ describe("delambda", () => {
     const xs = [1, 2, 3];
     expect(xs.map(pq).map($.p.q)).toEqual(xs);
   });
+  it("double-nested property accessor", () => {
+    const pqr = x => ({ p: { q: { r: x } } });
+    const xs = [1, 2, 3];
+    expect(xs.map(pqr).map($.p.q.r)).toEqual(xs);
+  });
 });
