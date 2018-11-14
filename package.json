@@ -2,24 +2,15 @@
   "name": "delambda",
   "version": "0.1.0",
   "description": "Replace trivial lambdas with notation based on ES6 Proxies",
+  "author": "Robert Koeninger",
+  "license": "MIT",
+  "keywords": ["lambda", "proxy"],
+  "repository": { "type": "git", "url": "git+https://github.com/rkoeninger/delambda.git" },
+  "bugs": { "url": "https://github.com/rkoeninger/delambda/issues" },
+  "homepage": "https://github.com/rkoeninger/delambda#readme",
   "scripts": {
     "test": "jasmine"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rkoeninger/delambda.git"
-  },
-  "keywords": [
-    "lambda",
-    "proxy"
-  ],
-  "author": "Robert Koeninger",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/rkoeninger/delambda/issues"
-  },
-  "homepage": "https://github.com/rkoeninger/delambda#readme",
-  "main": "index.js",
   "devDependencies": {
     "jasmine": "^3.3.0"
   }
