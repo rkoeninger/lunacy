@@ -7,7 +7,7 @@
     "helpers/**/*.js"
   ],
   "configure": {
-  	"random": true,
-  	"oneFailurePerSpec": false
+    "random": true,
+    "oneFailurePerSpec": false
   }
 }
