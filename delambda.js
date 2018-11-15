@@ -6,12 +6,14 @@
 
   const isEmpty = x => !x || x.length < 1;
 
+  const _ = { NULL: null };
+
   const merge = (xss, yss) => {
     if (isEmpty(xss)) { return yss; }
-    if (isEmpty(yss)) { return xss.filter(x => x !== root); }
+    if (isEmpty(yss)) { return xss.filter(x => x !== _); }
     const [x, ...xs] = xss;
     const [y, ...ys] = yss;
-    return x === root
+    return x === _
       ? [y, ...merge(xs, ys)]
       : [x, ...merge(xs, yss)];
   };
@@ -23,7 +25,7 @@
         : extend(arg => extract(f(arg), property));
     },
     apply(f, _1, args) {
-      if (args.some(x => x === root)) {
+      if (args.some(x => x === _)) {
         // TODO: clean this up
         return (...args2) => {
           // TODO: arg ends up being the wildcard
@@ -40,14 +42,16 @@
     }
   });
 
-  const root = extend(x => x);
+  const η = extend(x => x);
 
   if (typeof module !== "undefined") {
-    module.exports = root;
+    module.exports = { η, _ };
   } else if (typeof global !== "undefined") {
-    global.η = root;
+    global.η = η;
+    global._ = _;
   } else if (typeof window !== "undefined") {
-    window.η = root;
+    window.η = η;
+    window._ = _;
   } else {
     throw new Error("None of module, global, window are defined");
   }

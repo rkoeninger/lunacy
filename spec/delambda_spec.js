@@ -1,4 +1,4 @@
-const η = require("../delambda");
+const { η, _ } = require("../delambda");
 
 describe("delambda", () => {
   it("single property accessor", () => {
@@ -30,10 +30,10 @@ describe("delambda", () => {
   });
   it("using η as an argument creates a partial application", () => {
     const o = { x: 3, f(y) { return this.x + y; } };
-    expect(η.f(η)(o, 5)).toEqual(8);
+    expect(η.f(_)(o, 5)).toEqual(8);
   });
   it("using η simply to trigger deferred application", () => {
     const o = { x: 3, f(y, z) { return (this.x + y) * z; } };
-    expect(η.f(5, 3, η)(o)).toEqual(24);
+    expect(η.f(5, 3, _)(o)).toEqual(24);
   });
 });
