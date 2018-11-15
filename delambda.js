@@ -19,16 +19,14 @@
   };
 
   const extend = select => new Proxy(select, {
-    get(f, property, _2) {
-      return property === "β"
+    get: (f, property, _2) =>
+      property === "β"
         ? (...args) => extend(arg => f(arg)(...args))
-        : extend(arg => extract(f(arg), property));
-    },
-    apply(f, _1, args) {
-      return args.some(x => x === _)
+        : extend(arg => extract(f(arg), property)),
+    apply: (f, _1, args) =>
+      args.some(x => x === _)
         ? (...[arg, ...rest]) => f(arg)(...merge(args, rest || []))
-        : f(...args);
-    }
+        : f(...args)
   });
 
   const η = extend(x => x);
