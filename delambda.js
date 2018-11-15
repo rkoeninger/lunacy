@@ -18,7 +18,7 @@
 
   const extend = select => new Proxy(select, {
     get(f, property, _2) {
-      return property === "$"
+      return property === "β"
         ? (...args) => extend(arg => f(arg)(...args))
         : extend(arg => extract(f(arg), property));
     },
@@ -45,9 +45,9 @@
   if (typeof module !== "undefined") {
     module.exports = root;
   } else if (typeof global !== "undefined") {
-    global._ = root;
+    global.η = root;
   } else if (typeof window !== "undefined") {
-    window._ = root;
+    window.η = root;
   } else {
     throw new Error("None of module, global, window are defined");
   }

@@ -7,20 +7,20 @@
 ## Examples
 
 ```javascript
-[1, 2, 3].map(_)                             // [1, 2, 3]
+[1, 2, 3].map(η)                             // [1, 2, 3]
 
-[{p:1}, {p:2}, {p:3}].map(_.p)               // [1, 2, 3]
+[{p:1}, {p:2}, {p:3}].map(η.p)               // [1, 2, 3]
 
-[{p:{q:1}}, {p:{q:2}}, {p:{q:3}}].map(_.p.q) // [1, 2, 3]
+[{p:{q:1}}, {p:{q:2}}, {p:{q:3}}].map(η.p.q) // [1, 2, 3]
 
 const m = x => ({ x, f() { return this.x + 1; } });
-[m(0), m(1), m(2)].map(_.f).map(z => z())    // [1, 2, 3]
+[m(0), m(1), m(2)].map(η.f).map(z => z())    // [1, 2, 3]
 
 const m = x => ({ x, f(y) { return this.x + y; } });
-[m(0), m(1), m(2)].map(_.f.$(1))             // [1, 2, 3]
+[m(0), m(1), m(2)].map(η.f.β(1))             // [1, 2, 3]
 
 const m = x => ({ x, f(y) { return this.x + y; } });
-[m(0), m(1), m(2)].map(_.f(1, _))            // [1, 2, 3]
+[m(0), m(1), m(2)].map(η.f(1, η))            // [1, 2, 3]
 ```
 
 ## Usage
@@ -28,11 +28,9 @@ const m = x => ({ x, f(y) { return this.x + y; } });
 Typically, all one must do to use delambda is write:
 
 ```javascript
-const _ = require("delambda");
+const η = require("delambda");
 ```
 
-Keep in mind that delambda's use of `_` and `$` can conflict with `jQuery`, `underscorejs` and `lodash` as they too are fond of these symbols.
-
-Since unicdoe is allowed in JavaScript identifiers, I might recommend binding to `η`, the Greek letter eta, instead. It's somewhat appropriate as [eta-reduction][eta-reduction] often relieves us of writing lambdas in languages where currying is the norm.
+The Greek letter eta (`η`) is preferred as it's not likely to be used by any other library. It's also somewhat appropriate as [eta-reduction][eta-reduction] involves lambda elimination, at least in languages where currying is the norm.
 
 [eta-reduction]: https://wiki.haskell.org/Eta_conversion
