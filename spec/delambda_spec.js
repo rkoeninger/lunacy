@@ -28,9 +28,12 @@ describe("delambda", () => {
     const o = { x: 3, f(y, z) { return (this.x + y) * z; } };
     expect(_.f.$(5, 3)(o)).toEqual(24);
   });
-  // TODO: make this work
-  // it("using _ as an argument creates a partial application", () => {
-  //   const o = { x: 3, f(y) { return this.x + y; } };
-  //   expect(_.f(_)(o, 5)).toEqual(8);
-  // });
+  it("using _ as an argument creates a partial application", () => {
+    const o = { x: 3, f(y) { return this.x + y; } };
+    expect(_.f(_)(o, 5)).toEqual(8);
+  });
+  it("using _ simply to trigger deferred application", () => {
+    const o = { x: 3, f(y, z) { return (this.x + y) * z; } };
+    expect(_.f(5, 3, _)(o)).toEqual(24);
+  });
 });

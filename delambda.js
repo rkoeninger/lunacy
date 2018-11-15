@@ -31,7 +31,7 @@
           const rest = (args2 && args2.length > 1 && args2.slice(1)) || [];
           const ff = f(arg);
           const merged = merge(args, rest);
-          return ff(merged);
+          return ff(...merged);
           //(f(arg)(merge(args, rest)))
         };
       } else {
