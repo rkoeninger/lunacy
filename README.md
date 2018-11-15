@@ -21,6 +21,14 @@ const m = x => ({ x, f(y) { return this.x + y; } });
 
 const m = x => ({ x, f(y) { return this.x + y; } });
 [m(0), m(1), m(2)].map(η.f(1, _))            // [1, 2, 3]
+
+η.f(_)       // (x, y) => x.f(y)
+
+β(f)         // f()
+β(f, x)      // f(x)
+β(f, x, y)   // f(x, y)
+
+ι(10)        // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
 ## Usage

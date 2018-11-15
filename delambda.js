@@ -1,12 +1,7 @@
 {
-  const extract = (object, property) => {
-    const value = object[property];
-    return typeof value === "function" ? value.bind(object) : value;
-  };
+  const _ = Symbol("_");
 
   const isEmpty = x => !x || x.length < 1;
-
-  const _ = Symbol("_");
 
   const merge = (xss, yss) => {
     if (isEmpty(xss)) { return yss; }
@@ -16,6 +11,11 @@
     return x === _
       ? [y, ...merge(xs, ys)]
       : [x, ...merge(xs, yss)];
+  };
+
+  const extract = (object, property) => {
+    const value = object[property];
+    return typeof value === "function" ? value.bind(object) : value;
   };
 
   const extend = select => new Proxy(select, {
@@ -29,15 +29,23 @@
         : f(...args)
   });
 
+  const β = (f, ...args) => f(...args);
+
   const η = extend(x => x);
 
+  const ι = n => [...Array(n).keys()];
+
   if (typeof module !== "undefined") {
-    module.exports = { η, _ };
+    module.exports = { β, η, ι, _ };
   } else if (typeof global !== "undefined") {
+    global.β = β;
     global.η = η;
+    global.ι = ι;
     global._ = _;
   } else if (typeof window !== "undefined") {
+    window.β = β;
     window.η = η;
+    window.ι = ι;
     window._ = _;
   } else {
     throw new Error("None of module, global, window are defined");
