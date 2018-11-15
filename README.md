@@ -31,6 +31,9 @@ Typically, all one must do to use delambda is write:
 const η = require("delambda");
 ```
 
-The Greek letter eta (`η`) is preferred as it's not likely to be used by any other library. It's also somewhat appropriate as [eta-reduction][eta-reduction] involves lambda elimination, at least in languages where currying is the norm.
+The Greek letter eta (`η`) is preferred for a couple of reasons:
+
+- It's not likely to be used by any other library
+- It's also somewhat appropriate as [eta-reduction][eta-reduction] involves lambda elimination
 
 [eta-reduction]: https://wiki.haskell.org/Eta_conversion
