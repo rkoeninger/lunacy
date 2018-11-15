@@ -7,41 +7,20 @@
 ## Examples
 
 ```javascript
-[{p:1}, {p:2}, {p:3}].map(_.p)
+[1, 2, 3].map(_)                             // [1, 2, 3]
 
-// [1, 2, 3]
-```
+[{p:1}, {p:2}, {p:3}].map(_.p)               // [1, 2, 3]
 
-```javascript
-[{p:{q:1}}, {p:{q:2}}, {p:{q:3}}].map(_.p.q)
+[{p:{q:1}}, {p:{q:2}}, {p:{q:3}}].map(_.p.q) // [1, 2, 3]
 
-// [1, 2, 3]
-```
+const m = x => ({ x, f() { return this.x + 1; } });
+[m(0), m(1), m(2)].map(_.f).map(z => z())    // [1, 2, 3]
 
-```javascript
-[1, 2, 3].map(_)
+const m = x => ({ x, f(y) { return this.x + y; } });
+[m(0), m(1), m(2)].map(_.f.$(1))             // [1, 2, 3]
 
-// [1, 2, 3]
-```
-
-```javascript
-const m = x => ({
-  x,
-  f() { return this.x + 1; }
-});
-[m(0), m(1), m(2)].map(_.f).map(z => z())
-
-// [1, 2, 3]
-```
-
-```javascript
-const m = x => ({
-  x,
-  f(y) { return this.x + y; }
-});
-[m(0), m(1), m(2)].map(_.f.$(1))
-
-// [1, 2, 3]
+const m = x => ({ x, f(y) { return this.x + y; } });
+[m(0), m(1), m(2)].map(_.f(1, _))            // [1, 2, 3]
 ```
 
 ## Usage
