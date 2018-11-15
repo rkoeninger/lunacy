@@ -20,7 +20,7 @@ const m = x => ({ x, f(y) { return this.x + y; } });
 [m(0), m(1), m(2)].map(η.f.β(1))             // [1, 2, 3]
 
 const m = x => ({ x, f(y) { return this.x + y; } });
-[m(0), m(1), m(2)].map(η.f(1, η))            // [1, 2, 3]
+[m(0), m(1), m(2)].map(η.f(1, _))            // [1, 2, 3]
 ```
 
 ## Usage
@@ -28,12 +28,14 @@ const m = x => ({ x, f(y) { return this.x + y; } });
 Typically, all one must do to use delambda is write:
 
 ```javascript
-const η = require("delambda");
+const { η, _ } = require("delambda");
 ```
 
 The Greek letter eta (`η`) is preferred for a couple of reasons:
 
 - It's not likely to be used by any other library
 - It's also somewhat appropriate as [eta-reduction][eta-reduction] involves lambda elimination
+
+The underscore is preferred for the wildcard argument, but another symbol can be used if underscore.js or lodash are in scope.
 
 [eta-reduction]: https://wiki.haskell.org/Eta_conversion
