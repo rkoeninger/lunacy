@@ -6,7 +6,7 @@
 
   const isEmpty = x => !x || x.length < 1;
 
-  const _ = { NULL: null };
+  const _ = Symbol("_");
 
   const merge = (xss, yss) => {
     if (isEmpty(xss)) { return yss; }
