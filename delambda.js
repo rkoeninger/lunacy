@@ -25,20 +25,9 @@
         : extend(arg => extract(f(arg), property));
     },
     apply(f, _1, args) {
-      if (args.some(x => x === _)) {
-        // TODO: clean this up
-        return (...args2) => {
-          // TODO: arg ends up being the wildcard
-          const arg = args2 && args2.length > 0 && args2[0];
-          const rest = (args2 && args2.length > 1 && args2.slice(1)) || [];
-          const ff = f(arg);
-          const merged = merge(args, rest);
-          return ff(...merged);
-          //(f(arg)(merge(args, rest)))
-        };
-      } else {
-        return f(...args);
-      }
+      return args.some(x => x === _)
+        ? (...[arg, ...rest]) => f(arg)(...merge(args, rest || []))
+        : f(...args);
     }
   });
 
