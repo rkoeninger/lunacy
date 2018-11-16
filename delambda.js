@@ -39,6 +39,8 @@
 
   const ι = n => [...Array(n).keys()];
 
+  const ν = f => (...args) => !f(...args);
+
   const ξ = (x, y) => {
     if (typeof x !== "undefined") {
       if (typeof y !== "undefined") {
@@ -53,7 +55,19 @@
     return Math.random();
   };
 
-  const exported = { β, Δ, η, ι, ξ, _ };
+  const walkReduce = (f, acc, xs) => {
+    if (Array.isArray(xs)) {
+      return xs.reduce(β(walkReduce, f, _, _), acc);
+    } else {
+      return f(acc, xs);
+    }
+  };
+
+  const Π = (...xs) => walkReduce((x, y) => x * y, 1, xs);
+
+  const Σ = (...xs) => walkReduce((x, y) => x + y, 0, xs);
+
+  const exported = { β, Δ, η, ι, ν, ξ, Π, Σ, _ };
 
   if (typeof module !== "undefined") {
     module.exports = exported;
