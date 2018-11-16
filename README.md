@@ -7,18 +7,14 @@
 ## Examples
 
 ```javascript
-[1, 2, 3].map(η)                             // [1, 2, 3]
+const m1 = x => ({ x, f() { return this.x + 1; } });
+const my = x => ({ x, f(y) { return this.x + y; } });
 
-[{p:1}, {p:2}, {p:3}].map(η.p)               // [1, 2, 3]
-
-const m = x => ({ x, f() { return this.x + 1; } });
-[m(0), m(1), m(2)].map(η.f).map(β)           // [1, 2, 3]
-
-const m = x => ({ x, f(y) { return this.x + y; } });
-[m(0), m(1), m(2)].map(η.f.β(1))             // [1, 2, 3]
-
-const m = x => ({ x, f(y) { return this.x + y; } });
-[m(0), m(1), m(2)].map(η.f(1, _))            // [1, 2, 3]
+[1, 2, 3].map(η)                    // [1, 2, 3]
+[{p:1}, {p:2}, {p:3}].map(η.p)      // [1, 2, 3]
+[0, 1, 2].map(m1).map(η.f).map(β)    // [1, 2, 3]
+[0, 1, 2].map(my).map(η.f.β(1))      // [1, 2, 3]
+[0, 1, 2].map(my).map(η.f(1, _))     // [1, 2, 3]
 
 η.f(_)       // (x, y) => x.f(y)
 η.f(0, _)    // (x, y) => x.f(0, y)
