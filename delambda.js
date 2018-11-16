@@ -29,7 +29,9 @@
         : f(...args)
   });
 
-  const β = (f, ...args) => f(...args);
+  const β = (...args) => args.some(x => x === _)
+    ? (...rest) => β(...merge(args, rest || []))
+    : (args.length === 0 ? undefined : args[0](...args.slice(1)));
 
   const η = extend(x => x);
 

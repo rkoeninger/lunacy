@@ -19,25 +19,32 @@ describe("delambda", () => {
     const m = x => ({ x, f() { return this.x * this.x; } });
     expect([1, 2, 3].map(m).map(η.f(_))).toEqual([1, 4, 9]);
   });
-  it("β collects argument to apply to function once target is provided", () => {
+  it("η.f.β collects argument to apply to function once target is provided", () => {
     const m = x => ({ x, f(y) { return this.x + y; } });
     expect([1, 2, 3].map(m).map(η.f.β(5))).toEqual([6, 7, 8]);
   });
-  it("β collects multiple arguments to apply to function once target is provided", () => {
+  it("η.f.β collects multiple arguments to apply to function once target is provided", () => {
     const m = x => ({ x, f(y, z) { return (this.x + y) * z; } });
     expect([1, 2, 3].map(m).map(η.f.β(5, 3))).toEqual([18, 21, 24]);
   });
-  it("using _ as an argument creates a partial application", () => {
+  it("using _ in η creates a partial application", () => {
     const m = x => ({ x, f(y) { return this.x + y; } });
     expect([1, 2, 3].map(m).map(η.f(5, _))).toEqual([6, 7, 8]);
   });
-  it("using _ simply to trigger deferred application", () => {
+  it("using _ in η simply to trigger deferred application", () => {
     const m = x => ({ x, f(y, z) { return (this.x + y) * z; } });
     expect([1, 2, 3].map(m).map(η.f(5, 3, _))).toEqual([18, 21, 24]);
   });
   it("β applies a function", () => {
     const m = x => () => x * 2;
     expect([1, 2, 3].map(m).map(β)).toEqual([2, 4, 6]);
+  });
+  it("β() returns undefined", () => {
+    expect(β()).toBe(undefined);
+  });
+  it("using _ in β creates a partial application", () => {
+    const m = x => y => x * 2 + 1;
+    expect([1, 2, 3].map(m).map(β(_, 1))).toEqual([3, 5, 7]);
   });
   it("ι generates array of numbers from 0 to n", () => {
     expect([0, 1, 5].map(ι)).toEqual([[], [0], [0, 1, 2, 3, 4]]);
