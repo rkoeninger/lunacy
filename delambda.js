@@ -33,19 +33,23 @@
     ? (...rest) => β(...merge(args, rest || []))
     : (args.length === 0 ? undefined : args[0](...args.slice(1)));
 
+  const Δ = (x, y) => Math.abs(x - (y || 0));
+
   const η = extend(x => x);
 
   const ι = n => [...Array(n).keys()];
 
   if (typeof module !== "undefined") {
-    module.exports = { β, η, ι, _ };
+    module.exports = { β, Δ, η, ι, _ };
   } else if (typeof global !== "undefined") {
     global.β = β;
+    global.Δ = Δ;
     global.η = η;
     global.ι = ι;
     global._ = _;
   } else if (typeof window !== "undefined") {
     window.β = β;
+    window.Δ = Δ;
     window.η = η;
     window.ι = ι;
     window._ = _;

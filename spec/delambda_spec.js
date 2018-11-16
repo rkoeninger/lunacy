@@ -1,4 +1,4 @@
-const { β, η, ι, _ } = require("../delambda");
+const { β, Δ, η, ι, _ } = require("../delambda");
 
 describe("delambda", () => {
   it("η on its own is an identity function", () =>
@@ -45,6 +45,10 @@ describe("delambda", () => {
   });
   it("β() returns undefined", () =>
     expect(β()).toBe(undefined));
+  it("Δ(x, y) returns difference between x and y", () =>
+    expect(Δ(14, -27)).toEqual(41));
+  it("Δ(x) returns the absolute value of x", () =>
+    expect(Δ(-27)).toEqual(27));
   it("ι generates array of numbers from 0 to n", () =>
     expect([0, 1, 5].map(ι)).toEqual([[], [0], [0, 1, 2, 3, 4]]));
 });
