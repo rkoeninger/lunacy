@@ -39,21 +39,17 @@
 
   const ι = n => [...Array(n).keys()];
 
+  const ξ = Math.random;
+
+  const exported = { β, Δ, η, ι, ξ, _ };
+
   if (typeof module !== "undefined") {
-    module.exports = { β, Δ, η, ι, _ };
+    module.exports = exported;
   } else if (typeof global !== "undefined") {
-    global.β = β;
-    global.Δ = Δ;
-    global.η = η;
-    global.ι = ι;
-    global._ = _;
+    Object.keys(exported).forEach(k => global[k] = exported[k]);
   } else if (typeof window !== "undefined") {
-    window.β = β;
-    window.Δ = Δ;
-    window.η = η;
-    window.ι = ι;
-    window._ = _;
+    Object.keys(exported).forEach(k => window[k] = exported[k]);
   } else {
-    throw new Error("None of module, global, window are defined");
+    throw new Error("None of module.exports, global, window are defined");
   }
 }
