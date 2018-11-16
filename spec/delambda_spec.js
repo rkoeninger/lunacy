@@ -1,4 +1,4 @@
-const { β, Δ, η, ι, _ } = require("../delambda");
+const { β, Δ, η, ι, ξ, _ } = require("../delambda");
 
 describe("delambda", () => {
   it("η on its own is an identity function", () =>
