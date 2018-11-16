@@ -39,14 +39,12 @@ describe("delambda", () => {
     const m = x => () => x * 2;
     expect([1, 2, 3].map(m).map(β)).toEqual([2, 4, 6]);
   });
-  it("β() returns undefined", () => {
-    expect(β()).toBe(undefined);
-  });
   it("using _ in β creates a partial application", () => {
     const m = x => y => x * 2 + 1;
     expect([1, 2, 3].map(m).map(β(_, 1))).toEqual([3, 5, 7]);
   });
-  it("ι generates array of numbers from 0 to n", () => {
-    expect([0, 1, 5].map(ι)).toEqual([[], [0], [0, 1, 2, 3, 4]]);
-  });
+  it("β() returns undefined", () =>
+    expect(β()).toBe(undefined));
+  it("ι generates array of numbers from 0 to n", () =>
+    expect([0, 1, 5].map(ι)).toEqual([[], [0], [0, 1, 2, 3, 4]]));
 });
