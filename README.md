@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/rkoeninger/delambda.svg?branch=master)](https://travis-ci.org/rkoeninger/delambda)
+[![Build Status](https://travis-ci.org/rkoeninger/lunacy.svg?branch=master)](https://travis-ci.org/rkoeninger/lunacy)
 
-# De-Lambda
+# Lunacy
 
-> De-lambda your JavaScript with ES6 Proxies!
+> A playful kind of madness!
 
 ## Examples
 
@@ -41,10 +41,10 @@
 
 ## Usage
 
-Typically, all one must do to use delambda is write:
+Typically, all one must do to engage in lunacy is write:
 
 ```javascript
-const { β, Δ, η, ι, ν, ξ, ρ, Π, Σ, _ } = require("../delambda");
+const { β, Δ, η, ι, ν, ξ, ρ, Π, Σ, _ } = require("lunacy");
 ```
 
 To avoid naming conflicts, don't use Greek letters in your own code. Only I'm allowed to do that.

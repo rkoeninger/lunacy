@@ -1,6 +1,6 @@
-const { β, Δ, η, ι, ν, ξ, ρ, Π, Σ, _ } = require("../delambda");
+const { β, Δ, η, ι, ν, ξ, ρ, Π, Σ, _ } = require("../lunacy");
 
-describe("delambda", () => {
+describe("lunacy", () => {
   describe("β", () => {
     it("β applies a function", () => {
       const m = x => () => x * 2;
