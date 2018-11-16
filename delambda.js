@@ -20,18 +20,19 @@
 
   const extend = select => new Proxy(select, {
     get: (f, property, _2) =>
-      property === "β"
-        ? (...args) => extend(arg => f(arg)(...args))
-        : extend(arg => extract(f(arg), property)),
+      property === "β" ? (...args) => extend(arg => f(arg)(...args)) :
+      property === "ν" ? extend(ν(f)) :
+                         extend(arg => extract(f(arg), property)),
     apply: (f, _1, args) =>
       args.some(x => x === _)
         ? (...[arg, ...rest]) => f(arg)(...merge(args, rest || []))
         : f(...args)
   });
 
-  const β = (...args) => args.some(x => x === _)
-    ? (...rest) => β(...merge(args, rest || []))
-    : (args.length === 0 ? undefined : args[0](...args.slice(1)));
+  const β = (...args) =>
+    args.some(x => x === _)
+      ? (...rest) => β(...merge(args, rest || []))
+      : (args.length === 0 ? undefined : args[0](...args.slice(1)));
 
   const Δ = (x, y) => Math.abs(x - (y || 0));
 
@@ -55,19 +56,24 @@
     return Math.random();
   };
 
-  const walkReduce = (f, acc, xs) => {
-    if (Array.isArray(xs)) {
-      return xs.reduce(β(walkReduce, f, _, _), acc);
-    } else {
-      return f(acc, xs);
-    }
+  const ρ = (oldName, newName, object) => {
+    if (typeof newName === "undefined") return β(ρ, oldName, _, _);
+    if (typeof object === "undefined") return β(ρ, oldName, newName, _);
+    const newObject = { ...object, [newName]: object[oldName] };
+    Reflect.deleteProperty(newObject, oldName);
+    return newObject;
   };
+
+  const walkReduce = (f, acc, xs) =>
+    Array.isArray(xs)
+      ? xs.reduce(β(walkReduce, f, _, _), acc)
+      : f(acc, xs);
 
   const Π = (...xs) => walkReduce((x, y) => x * y, 1, xs);
 
   const Σ = (...xs) => walkReduce((x, y) => x + y, 0, xs);
 
-  const exported = { β, Δ, η, ι, ν, ξ, Π, Σ, _ };
+  const exported = { β, Δ, η, ι, ν, ξ, ρ, Π, Σ, _ };
 
   if (typeof module !== "undefined") {
     module.exports = exported;

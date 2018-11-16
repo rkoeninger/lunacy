@@ -30,6 +30,8 @@
 ξ(max)       // Math.floor(Math.random() * max)
 ξ(min, max)  // Math.floor(Math.random() * (max - min)) + min
 
+ρ(x, y, o)   // Reflect.deleteProperty({ ...o, [y]: o[x] }, x)
+
 Π(x, y, z)   // x * y * z
 Π([x, y, z]) // x * y * z
 
@@ -42,7 +44,7 @@
 Typically, all one must do to use delambda is write:
 
 ```javascript
-const { β, Δ, η, ι, ν, ξ, Π, Σ, _ } = require("delambda");
+const { β, Δ, η, ι, ν, ξ, ρ, Π, Σ, _ } = require("../delambda");
 ```
 
 To avoid naming conflicts, don't use Greek letters in your own code. Only I'm allowed to do that.
