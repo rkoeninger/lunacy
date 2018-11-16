@@ -39,7 +39,19 @@
 
   const ι = n => [...Array(n).keys()];
 
-  const ξ = Math.random;
+  const ξ = (x, y) => {
+    if (typeof x !== "undefined") {
+      if (typeof y !== "undefined") {
+        x = Math.ceil(x);
+        y = Math.floor(y);
+        return Math.floor(Math.random() * (y - x)) + x;
+      } else {
+        x = Math.floor(x);
+        return Math.floor(Math.random() * x);
+      }
+    }
+    return Math.random();
+  };
 
   const exported = { β, Δ, η, ι, ξ, _ };
 
