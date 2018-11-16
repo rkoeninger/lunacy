@@ -59,6 +59,7 @@
   const ρ = (oldName, newName, object) => {
     if (typeof newName === "undefined") return β(ρ, oldName, _, _);
     if (typeof object === "undefined") return β(ρ, oldName, newName, _);
+    if (!(object && object.hasOwnProperty(oldName))) return object;
     const newObject = { ...object, [newName]: object[oldName] };
     Reflect.deleteProperty(newObject, oldName);
     return newObject;
