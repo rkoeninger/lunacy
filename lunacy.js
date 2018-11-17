@@ -75,17 +75,12 @@
 
   const Σ = (...xs) => walkReduce((x, y) => x + y, 0, xs);
 
-  const Γ = global || window || this;
+  const Γ =
+    typeof global !== "undefined" ? global :
+    typeof window !== "undefined" ? window :
+                                    this;
 
   const exported = { β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, _ };
 
-  if (typeof module !== "undefined") {
-    module.exports = exported;
-  } else if (typeof global !== "undefined") {
-    Object.keys(exported).forEach(k => global[k] = exported[k]);
-  } else if (typeof window !== "undefined") {
-    Object.keys(exported).forEach(k => window[k] = exported[k]);
-  } else {
-    throw new Error("None of module.exports, global, window are defined");
-  }
+  Object.assign(typeof exports !== "undefined" ? exports : Γ, exported);
 }
