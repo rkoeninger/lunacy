@@ -21,7 +21,7 @@
   const extend = select => new Proxy(select, {
     get: (f, property, _2) =>
       property === "β" ? (...args) => extend(arg => f(arg)(...args)) :
-      property === "ν" ? extend(ν(f)) :
+      property === "ν" ? extend(arg => ν(f(arg))) :
                          extend(arg => extract(f(arg), property)),
     apply: (f, _1, args) =>
       args.some(x => x === _)

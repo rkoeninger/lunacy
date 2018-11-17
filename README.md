@@ -7,36 +7,38 @@
 ## Examples
 
 ```javascript
-β(f)         // f()
-β(f, x)      // f(x)
-β(f, x, y)   // f(x, y)
-β(_, x)      // f => f(x)
-β(_, x, _)   // (f, y) => f(x, y)
+β(f)          // f()
+β(f, x)       // f(x)
+β(f, x, y)    // f(x, y)
+β(_, x)       // f => f(x)
+β(_, x, _)    // (f, y) => f(x, y)
 
-Δ(x, y)      // Math.abs(x - y)
-Δ(x)         // Math.abs(x)
+Δ(x, y)       // Math.abs(x - y)
+Δ(x)          // Math.abs(x)
 
-η            // x => x
-η.p          // x => x.p
-η.f.β(1)     // x => x.f(1)
-η.f(_)       // (x, y) => x.f(y)
-η.f(0, _)    // (x, y) => x.f(0, y)
+η             // x => x
+η.p           // x => x.p
+η.f.β(1)      // x => x.f(1)
+η.f(_)        // (x, y) => x.f(y)
+η.f(0, _)     // (x, y) => x.f(0, y)
+η.f.ν         // (x, y) => !x.f(y)
+η.f.ν.β(1, _) // (x, y) => !x.f(1, y)
 
-ι(5)         // [0, 1, 2, 3, 4]
+ι(5)          // [0, 1, 2, 3, 4]
 
-ν(f)         // x => !f(x)
+ν(f)          // x => !f(x)
 
-ξ()          // Math.random()
-ξ(max)       // Math.floor(Math.random() * max)
-ξ(min, max)  // Math.floor(Math.random() * (max - min)) + min
+ξ()           // Math.random()
+ξ(max)        // Math.floor(Math.random() * max)
+ξ(min, max)   // Math.floor(Math.random() * (max - min)) + min
 
-ρ(x, y, o)   // Reflect.deleteProperty({ ...o, [y]: o[x] }, x)
+ρ(x, y, o)    // Reflect.deleteProperty({ ...o, [y]: o[x] }, x)
 
-Π(x, y, z)   // x * y * z
-Π([x, y, z]) // x * y * z
+Π(x, y, z)    // x * y * z
+Π([x, y, z])  // x * y * z
 
-Σ(x, y, z)   // x + y + z
-Σ([x, y, z]) // x + y + z
+Σ(x, y, z)    // x + y + z
+Σ([x, y, z])  // x + y + z
 ```
 
 ## Usage

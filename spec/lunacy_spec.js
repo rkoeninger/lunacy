@@ -46,11 +46,10 @@ describe("lunacy", () => {
       const m = x => ({ x, f(y, z) { return (this.x + y) * z; } });
       expect([1, 2, 3].map(m).map(η.f.β(5, 3))).toEqual([18, 21, 24]);
     });
-    // TODO: failing
-    // it("η.f.ν composes a logical inversion on function call", () => {
-    //   const m = x => ({ x, f(y) { return this.x > y; } });
-    //   expect([1, 2, 3].map(m).map(η.f.ν.β(2))).toEqual([true, true, false]);
-    // });
+    it("η.f.ν composes a logical inversion on function call", () => {
+      const m = x => ({ x, f(y) { return this.x > y; } });
+      expect([1, 2, 3, 4].map(m).map(η.f.ν.β(2))).toEqual([true, true, false, false]);
+    });
     it("using _ in η creates a partial application", () => {
       const m = x => ({ x, f(y) { return this.x + y; } });
       expect([1, 2, 3].map(m).map(η.f(5, _))).toEqual([6, 7, 8]);
