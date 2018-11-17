@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/rkoeninger/lunacy.svg?branch=master)](https://travis-ci.org/rkoeninger/lunacy)
+[![travis-ci](https://travis-ci.org/rkoeninger/lunacy.svg?branch=master)](https://travis-ci.org/rkoeninger/lunacy)
+[![npm](https://img.shields.io/npm/v/lunacy.svg)](https://www.npmjs.com/package/lunacy)
 
 # Lunacy
 
