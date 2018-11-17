@@ -13,6 +13,13 @@
       : [x, ...merge(xs, yss)];
   };
 
+  const β = (...args) =>
+    args.some(x => x === _)
+      ? (...rest) => β(...merge(args, rest || []))
+      : (args.length === 0 ? undefined : args[0](...args.slice(1)));
+
+  const Δ = (x, y) => Math.abs(x - (y || 0));
+
   const extract = (object, property) => {
     const value = object[property];
     return typeof value === "function" ? value.bind(object) : value;
@@ -28,13 +35,6 @@
         ? (...[arg, ...rest]) => f(arg)(...merge(args, rest || []))
         : f(...args)
   });
-
-  const β = (...args) =>
-    args.some(x => x === _)
-      ? (...rest) => β(...merge(args, rest || []))
-      : (args.length === 0 ? undefined : args[0](...args.slice(1)));
-
-  const Δ = (x, y) => Math.abs(x - (y || 0));
 
   const η = extend(x => x);
 
@@ -71,18 +71,18 @@
       ? xs.reduce(β(walkReduce, f, _, _), acc)
       : f(acc, xs);
 
-  const Π = (...xs) => walkReduce((x, y) => x * y, 1, xs);
-
-  const Σ = (...xs) => walkReduce((x, y) => x + y, 0, xs);
-
   const Γ =
     typeof global !== "undefined" ? global :
     typeof window !== "undefined" ? window :
                                     this;
 
+  const Π = (...xs) => walkReduce((x, y) => x * y, 1, xs);
+
+  const Σ = (...xs) => walkReduce((x, y) => x + y, 0, xs);
+
   const ℮ = (x, precision = 1) => Math.round(x / precision) * precision;
 
-  const exported = { β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, _ };
+  const exported = { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮ };
 
   Object.assign(typeof exports !== "undefined" ? exports : Γ, exported);
 }

@@ -1,4 +1,4 @@
-const { β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, _ } = require("../lunacy");
+const { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮ } = require("../lunacy");
 
 describe("lunacy", () => {
   describe("β", () => {
