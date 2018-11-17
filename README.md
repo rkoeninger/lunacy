@@ -2,7 +2,7 @@
 
 # Lunacy
 
-> A playful kind of madness!
+> The kind of library that only comes out at night...
 
 ## Examples
 
