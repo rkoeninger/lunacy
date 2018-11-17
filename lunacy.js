@@ -80,7 +80,9 @@
     typeof window !== "undefined" ? window :
                                     this;
 
-  const exported = { β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, _ };
+  const ℮ = (x, precision = 1) => Math.round(x / precision) * precision;
+
+  const exported = { β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, _ };
 
   Object.assign(typeof exports !== "undefined" ? exports : Γ, exported);
 }

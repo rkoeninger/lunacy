@@ -42,6 +42,9 @@
 
 Σ(x, y, z)        // x + y + z
 Σ([x, y, z])      // x + y + z
+
+℮(x)              // Math.round(x)
+℮(x, precision)   // Math.round(x / precision) * precision
 ```
 
 ## Usage
@@ -49,7 +52,7 @@
 Typically, all one must do to engage in lunacy is write:
 
 ```javascript
-const { β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, _ } = require("lunacy");
+const { β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, _ } = require("lunacy");
 ```
 
 To avoid naming conflicts, don't use Greek letters in your own code. Only I'm allowed to do that.

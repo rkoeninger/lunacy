@@ -1,4 +1,4 @@
-const { β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, _ } = require("../lunacy");
+const { β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, _ } = require("../lunacy");
 
 describe("lunacy", () => {
   describe("β", () => {
@@ -78,5 +78,13 @@ describe("lunacy", () => {
   describe("Σ", () => {
     it("Σ adds up values in nested arrays", () =>
       expect(Σ(3, 4, [2, 7, [9, 5], 1], 8, [6])).toEqual(45));
+  });
+  describe("℮", () => {
+    it("rounds numbers to nearest integer", () =>
+      expect(℮(14.65)).toEqual(15));
+    it("rounds number to nearest multiple", () =>
+      expect(℮(14.65, 2)).toEqual(14));
+    it("rounds number to nearest fractional multiple", () =>
+      expect(℮(14.65, 0.25)).toEqual(14.75));
   });
 });
