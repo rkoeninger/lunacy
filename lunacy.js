@@ -56,14 +56,15 @@
     return Math.random();
   };
 
-  const ρ = (oldName, newName, object) => {
-    if (typeof newName === "undefined") return β(ρ, oldName, _, _);
-    if (typeof object === "undefined") return β(ρ, oldName, newName, _);
-    if (!(object && object.hasOwnProperty(oldName))) return object;
-    const newObject = { ...object, [newName]: object[oldName] };
-    Reflect.deleteProperty(newObject, oldName);
-    return newObject;
+  const assignCopy = (renames, source) => (dest, key) => {
+    dest[renames[key] || key] = source[key];
+    return dest;
   };
+
+  const ρ = (renames, object) =>
+    object
+      ? Object.keys(object).reduce(assignCopy(renames, object), {})
+      : β(ρ, renames, _);
 
   const walkReduce = (f, acc, xs) =>
     Array.isArray(xs)
@@ -74,7 +75,9 @@
 
   const Σ = (...xs) => walkReduce((x, y) => x + y, 0, xs);
 
-  const exported = { β, Δ, η, ι, ν, ξ, ρ, Π, Σ, _ };
+  const Γ = global || window || this;
+
+  const exported = { β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, _ };
 
   if (typeof module !== "undefined") {
     module.exports = exported;

@@ -1,4 +1,4 @@
-const { β, Δ, η, ι, ν, ξ, ρ, Π, Σ, _ } = require("../lunacy");
+const { β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, _ } = require("../lunacy");
 
 describe("lunacy", () => {
   describe("β", () => {
@@ -69,7 +69,7 @@ describe("lunacy", () => {
   });
   describe("ρ", () => {
     it("renames properties", () =>
-      expect(ρ("a", "b", { a: 1 })).toEqual({ b: 1 }));
+      expect(ρ({ a: "b" }, { a: 1 })).toEqual({ b: 1 }));
   });
   describe("Π", () => {
     it("Π multiplies together values in nested arrays", () =>
