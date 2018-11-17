@@ -4,9 +4,17 @@
   "description": "A playful kind of madness!",
   "author": "Robert Koeninger",
   "license": "MIT",
-  "keywords": ["lambda", "proxy"],
-  "repository": { "type": "git", "url": "git+https://github.com/rkoeninger/lunacy.git" },
-  "bugs": { "url": "https://github.com/rkoeninger/lunacy/issues" },
+  "keywords": [
+    "lambda",
+    "proxy"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkoeninger/lunacy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rkoeninger/lunacy/issues"
+  },
   "homepage": "https://github.com/rkoeninger/lunacy#readme",
   "scripts": {
     "test": "jasmine"
