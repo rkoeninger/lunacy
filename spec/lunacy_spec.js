@@ -1,4 +1,4 @@
-const { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮ } = require("../lunacy");
+const { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ } = require("../lunacy");
 
 describe("lunacy", () => {
   describe("β", () => {
@@ -86,5 +86,34 @@ describe("lunacy", () => {
       expect(℮(14.65, 2)).toEqual(14));
     it("rounds number to nearest fractional multiple", () =>
       expect(℮(14.65, 0.25)).toEqual(14.75));
+  });
+  describe("ℝ", () => {
+    it("identifies real numbers", () => {
+      expect(ℝ(2392684.4756738)).toBe(true);
+      expect(ℝ(-0.23926844756738)).toBe(true);
+      expect(ℝ(2392684e+34)).toBe(true);
+      expect(ℝ(NaN)).toBe(false);
+      expect(ℝ(Infinity)).toBe(false);
+      expect(ℝ(-Infinity)).toBe(false);
+      expect(ℝ("")).toBe(false);
+      expect(ℝ({})).toBe(false);
+      expect(ℝ(x => x)).toBe(false);
+    });
+  });
+  describe("ℤ", () => {
+    it("identifies integers", () => {
+      expect(ℤ(2392)).toBe(true);
+      expect(ℤ(-56738)).toBe(true);
+      expect(ℤ(2392684e+34)).toBe(true);
+      expect(ℤ(2392684.4756738)).toBe(false);
+      expect(ℤ(-0.23926844756738)).toBe(false);
+    });
+  });
+  describe("ℕ", () => {
+    it("identifies natural numbers (non-negative integers)", () => {
+      expect(ℕ(2392)).toBe(true);
+      expect(ℕ(-56738)).toBe(false);
+      expect(ℕ(2392684e+34)).toBe(true);
+    });
   });
 });

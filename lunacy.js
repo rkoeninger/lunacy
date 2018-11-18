@@ -21,8 +21,8 @@
   const Δ = (x, y) => Math.abs(x - (y || 0));
 
   const extract = (object, property) => {
-    const value = object[property];
-    return typeof value === "function" ? value.bind(object) : value;
+    const x = object[property];
+    return typeof x === "function" ? x.bind(object) : x;
   };
 
   const extend = select => new Proxy(select, {
@@ -56,25 +56,21 @@
     return Math.random();
   };
 
-  const assignCopy = (renames, source) => (dest, key) => {
-    dest[renames[key] || key] = source[key];
-    return dest;
-  };
-
-  const ρ = (renames, object) =>
-    object
-      ? Object.keys(object).reduce(assignCopy(renames, object), {})
-      : β(ρ, renames, _);
-
-  const walkReduce = (f, acc, xs) =>
-    Array.isArray(xs)
-      ? xs.reduce(β(walkReduce, f, _, _), acc)
-      : f(acc, xs);
+  const ρ = (renames, source) =>
+    Object.keys(source).reduce((dest, key) => {
+      dest[renames[key] || key] = source[key];
+      return dest;
+    }, {});
 
   const Γ =
     typeof global !== "undefined" ? global :
     typeof window !== "undefined" ? window :
                                     this;
+
+  const walkReduce = (f, acc, xs) =>
+    Array.isArray(xs)
+      ? xs.reduce(β(walkReduce, f, _, _), acc)
+      : f(acc, xs);
 
   const Π = (...xs) => walkReduce((x, y) => x * y, 1, xs);
 
@@ -82,7 +78,13 @@
 
   const ℮ = (x, precision = 1) => Math.round(x / precision) * precision;
 
-  const exported = { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮ };
+  const ℝ = x => typeof x === "number" && !isNaN(x) && isFinite(x);
+
+  const ℤ = x => ℝ(x) && Number.isInteger(x);
+
+  const ℕ = x => ℤ(x) && x >= 0;
+
+  const exported = { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ };
 
   Object.assign(typeof exports !== "undefined" ? exports : Γ, exported);
 }
