@@ -57,6 +57,7 @@
 ℤ(x)              // ℝ(x) && Number.isInteger(x)
 ℕ(x)              // ℤ(x) && x >= 0
 𝔸(x)              // Array.isArray(x)
+𝔽(x)              // typeof x === "function"
 𝕊(x)              // typeof x === "string"
 
 ಠ_ಠ(x)            // typeof x === "undefined"
