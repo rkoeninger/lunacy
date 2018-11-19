@@ -14,10 +14,14 @@ describe("lunacy", () => {
       expect(β()).toBe(undefined));
   });
   describe("Δ", () => {
-    it("Δ(x, y) returns difference between x and y", () =>
+    it("Δ of two numbers returns difference between them", () =>
       expect(Δ(14, -27)).toEqual(41));
-    it("Δ(x) returns the absolute value of x", () =>
+    it("Δ of a number returns the absolute value of that number", () =>
       expect(Δ(-27)).toEqual(27));
+    it("Δ of two strings returns the levenshtein distance between them", () =>
+      expect(Δ("qwerty", "azerty")).toEqual(2));
+    it("Δ of a string returns the length of that string", () =>
+      expect(Δ("qwerty")).toEqual(6));
   });
   describe("η", () => {
     it("η on its own is an identity function", () =>

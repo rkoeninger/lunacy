@@ -14,8 +14,13 @@
 β(_, x)           // f => f(x)
 β(_, x, _)        // (f, y) => f(x, y)
 
+                  // for numbers:
 Δ(x, y)           // Math.abs(x - y)
 Δ(x)              // Math.abs(x)
+
+                  // for strings:
+Δ(s, t)           // levenshteinDistance(s, t)
+Δ(s)              // s.length
 
 η                 // x => x
 η.p               // x => x.p

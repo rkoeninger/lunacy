@@ -18,7 +18,26 @@
       ? (...rest) => β(...merge(args, rest || []))
       : (args.length === 0 ? undefined : args[0](...args.slice(1)));
 
-  const Δ = (x, y) => Math.abs(x - (y || 0));
+  const numericDistance = (x, y) => Math.abs(x - y);
+
+  const levenshteinDistance = (x, y) => {
+    if (x === "") return y.length;
+    if (y === "") return x.length;
+    const _x = x[x.length - 1];
+    const _y = y[y.length - 1];
+    const x_ = x.slice(0, x.length - 1);
+    const y_ = y.slice(0, y.length - 1);
+    return Math.min(
+      levenshteinDistance(x_, y)  + 1,
+      levenshteinDistance(x,  y_) + 1,
+      levenshteinDistance(x_, y_) + (_x === _y ? 0 : 1));
+  };
+
+  const Δ = (x, y) => {
+    if (ℝ(x) && (ℝ(y) || ಠ_ಠ(y))) return numericDistance(x, y || 0);
+    if (𝕊(x) && (𝕊(y) || ಠ_ಠ(y))) return levenshteinDistance(x, y || "");
+    throw new Error(`cannot compare types: ${typeof x}, ${typeof y}`);
+  };
 
   const extract = (object, property) => {
     const x = object[property];
