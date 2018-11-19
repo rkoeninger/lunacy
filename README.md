@@ -46,9 +46,11 @@
 ℮(x)              // Math.round(x)
 ℮(x, precision)   // Math.round(x / precision) * precision
 
-ℝ(x)              // isRealNumber(x)
-ℤ(x)              // isInteger(x)
-ℕ(x)              // isInteger(x) && x >= 0
+ℝ(x)              // typeof x === "number" && isFinite(x)
+ℤ(x)              // ℝ(x) && Number.isInteger(x)
+ℕ(x)              // ℤ(x) && x >= 0
+𝔸(x)              // Array.isArray(x)
+𝕊(x)              // typeof x === "string"
 ```
 
 ## Usage
@@ -56,7 +58,7 @@
 Typically, all one must do to engage in lunacy is write:
 
 ```javascript
-const { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ } = require("lunacy");
+const { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊 } = require("lunacy");
 ```
 
 To avoid naming conflicts, don't use Greek letters in your own code. Only I'm allowed to do that.

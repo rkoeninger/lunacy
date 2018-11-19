@@ -78,13 +78,17 @@
 
   const ℮ = (x, precision = 1) => Math.round(x / precision) * precision;
 
-  const ℝ = x => typeof x === "number" && !isNaN(x) && isFinite(x);
+  const ℝ = x => typeof x === "number" && isFinite(x);
 
   const ℤ = x => ℝ(x) && Number.isInteger(x);
 
   const ℕ = x => ℤ(x) && x >= 0;
 
-  const exported = { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ };
+  const 𝔸 = Array.isArray;
+
+  const 𝕊 = x => typeof x === "string";
+
+  const exported = { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊 };
 
   Object.assign(typeof exports !== "undefined" ? exports : Γ, exported);
 }

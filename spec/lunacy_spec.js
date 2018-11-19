@@ -1,4 +1,4 @@
-const { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ } = require("../lunacy");
+const { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊 } = require("../lunacy");
 
 describe("lunacy", () => {
   describe("β", () => {
@@ -114,6 +114,21 @@ describe("lunacy", () => {
       expect(ℕ(2392)).toBe(true);
       expect(ℕ(-56738)).toBe(false);
       expect(ℕ(2392684e+34)).toBe(true);
+    });
+  });
+  describe("𝔸", () => {
+    it("identifies arrays", () => {
+      expect(𝔸([])).toBe(true);
+      expect(𝔸([0].map(x => x + 1))).toBe(true);
+      expect(𝔸({})).toBe(false);
+    });
+  });
+  describe("𝕊", () => {
+    it("identifies arrays", () => {
+      expect(𝕊("")).toBe(true);
+      expect(𝕊("asdf")).toBe(true);
+      expect(𝕊([])).toBe(false);
+      expect(𝕊({})).toBe(false);
     });
   });
 });
