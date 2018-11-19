@@ -51,6 +51,8 @@
 ℕ(x)              // ℤ(x) && x >= 0
 𝔸(x)              // Array.isArray(x)
 𝕊(x)              // typeof x === "string"
+
+ಠ_ಠ(x)            // typeof x === "undefined"
 ```
 
 ## Usage
@@ -58,7 +60,7 @@
 Typically, all one must do to engage in lunacy is write:
 
 ```javascript
-const { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊 } = require("lunacy");
+const { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊, ಠ_ಠ } = require("lunacy");
 ```
 
 To avoid naming conflicts, don't use Greek letters in your own code. Only I'm allowed to do that.

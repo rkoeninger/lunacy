@@ -43,8 +43,8 @@
   const ν = f => (...args) => !f(...args);
 
   const ξ = (x, y) => {
-    if (typeof x !== "undefined") {
-      if (typeof y !== "undefined") {
+    if (!ಠ_ಠ(x)) {
+      if (!ಠ_ಠ(y)) {
         x = Math.ceil(x);
         y = Math.floor(y);
         return Math.floor(Math.random() * (y - x)) + x;
@@ -68,7 +68,7 @@
                                     this;
 
   const walkReduce = (f, acc, xs) =>
-    Array.isArray(xs)
+    𝔸(xs)
       ? xs.reduce(β(walkReduce, f, _, _), acc)
       : f(acc, xs);
 
@@ -88,7 +88,9 @@
 
   const 𝕊 = x => typeof x === "string";
 
-  const exported = { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊 };
+  const ಠ_ಠ = x => typeof x === "undefined";
+
+  const exported = { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊, ಠ_ಠ };
 
   Object.assign(typeof exports !== "undefined" ? exports : Γ, exported);
 }
