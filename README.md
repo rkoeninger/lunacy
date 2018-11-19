@@ -27,12 +27,12 @@
 η.f.β(1)          // x => x.f(1)
 η.f(_)            // (x, y) => x.f(y)
 η.f(0, _)         // (x, y) => x.f(0, y)
-η.f.ν             // (x, y) => !x.f(y)
-η.f.ν.β(1, _)     // (x, y) => !x.f(1, y)
+η.f.ñ             // (x, y) => !x.f(y)
+η.f.ñ.β(1, _)     // (x, y) => !x.f(1, y)
 
 ι(5)              // [0, 1, 2, 3, 4]
 
-ν(f)              // x => !f(x)
+ñ(f)              // x => !f(x)
 
 ξ()               // Math.random()
 ξ(max)            // Math.floor(Math.random() * max)
@@ -65,7 +65,7 @@
 Typically, all one must do to engage in lunacy is write:
 
 ```javascript
-const { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊, ಠ_ಠ } = require("lunacy");
+const { _, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊, ಠ_ಠ } = require("lunacy");
 ```
 
-To avoid naming conflicts, don't use Greek letters in your own code. Only I'm allowed to do that.
+To avoid naming conflicts, don't use accented or non-latin letters in your own code. Only I'm allowed to do that.

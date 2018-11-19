@@ -1,4 +1,4 @@
-const { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊, ಠ_ಠ } = require("../lunacy");
+const { _, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊, ಠ_ಠ } = require("../lunacy");
 
 describe("lunacy", () => {
   describe("β", () => {
@@ -50,9 +50,9 @@ describe("lunacy", () => {
       const m = x => ({ x, f(y, z) { return (this.x + y) * z; } });
       expect([1, 2, 3].map(m).map(η.f.β(5, 3))).toEqual([18, 21, 24]);
     });
-    it("η.f.ν composes a logical inversion on function call", () => {
+    it("η.f.ñ composes a logical inversion on function call", () => {
       const m = x => ({ x, f(y) { return this.x > y; } });
-      expect([1, 2, 3, 4].map(m).map(η.f.ν.β(2))).toEqual([true, true, false, false]);
+      expect([1, 2, 3, 4].map(m).map(η.f.ñ.β(2))).toEqual([true, true, false, false]);
     });
     it("using _ in η creates a partial application", () => {
       const m = x => ({ x, f(y) { return this.x + y; } });
@@ -67,9 +67,9 @@ describe("lunacy", () => {
     it("ι generates array of numbers from 0 to n", () =>
       expect([0, 1, 5].map(ι)).toEqual([[], [0], [0, 1, 2, 3, 4]]));
   });
-  describe("ν", () => {
+  describe("ñ", () => {
     it("complements a function", () =>
-      expect(ν(x => x >= 0)(-1)).toBe(true));
+      expect(ñ(x => x >= 0)(-1)).toBe(true));
   });
   describe("ρ", () => {
     it("renames properties", () =>

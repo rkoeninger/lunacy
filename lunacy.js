@@ -47,7 +47,7 @@
   const extend = select => new Proxy(select, {
     get: (f, property, _2) =>
       property === "β" ? (...args) => extend(arg => f(arg)(...args)) :
-      property === "ν" ? extend(arg => ν(f(arg))) :
+      property === "ñ" ? extend(arg => ñ(f(arg))) :
                          extend(arg => extract(f(arg), property)),
     apply: (f, _1, args) =>
       args.some(x => x === _)
@@ -59,7 +59,7 @@
 
   const ι = n => [...Array(n).keys()];
 
-  const ν = f => (...args) => !f(...args);
+  const ñ = f => (...args) => !f(...args);
 
   const ξ = (x, y) => {
     if (!ಠ_ಠ(x)) {
@@ -109,7 +109,7 @@
 
   const ಠ_ಠ = x => typeof x === "undefined";
 
-  const exported = { _, β, Δ, η, ι, ν, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊, ಠ_ಠ };
+  const exported = { _, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊, ಠ_ಠ };
 
   Object.assign(typeof exports !== "undefined" ? exports : Γ, exported);
 }
