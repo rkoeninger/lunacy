@@ -8,6 +8,8 @@
 ## Examples
 
 ```javascript
+ċ(g, f)           // x => g(f(x))
+
 β(f)              // f()
 β(f, x)           // f(x)
 β(f, x, y)        // f(x, y)
@@ -58,6 +60,8 @@
 𝕊(x)              // typeof x === "string"
 
 ಠ_ಠ(x)            // typeof x === "undefined"
+
+ǃ(x)               // throw new Error(x)
 ```
 
 ## Usage
@@ -65,7 +69,7 @@
 Typically, all one must do to engage in lunacy is write:
 
 ```javascript
-const { _, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊, ಠ_ಠ } = require("lunacy");
+const { _, ċ, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ } = require("lunacy");
 ```
 
 To avoid naming conflicts, don't use accented or non-latin letters in your own code. Only I'm allowed to do that.

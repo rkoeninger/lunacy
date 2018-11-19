@@ -1,6 +1,8 @@
 {
   const _ = Symbol("_");
 
+  const ċ = (...fs) => x => fs.reduceRight((x, f) => f(x), x);
+
   const isEmpty = x => !x || x.length < 1;
 
   const merge = (xss, yss) => {
@@ -14,9 +16,9 @@
   };
 
   const β = (...args) =>
-    args.some(x => x === _)
-      ? (...rest) => β(...merge(args, rest || []))
-      : (args.length === 0 ? undefined : args[0](...args.slice(1)));
+    args.some(x => x === _) ? (...rest) => β(...merge(args, rest || [])) :
+    args.length > 0         ? args[0](...args.slice(1)) :
+    ǃ("β takes at least 1 argument");
 
   const numericDistance = (x, y) => Math.abs(x - y);
 
@@ -33,11 +35,10 @@
       levenshteinDistance(x_, y_) + (_x === _y ? 0 : 1));
   };
 
-  const Δ = (x, y) => {
-    if (ℝ(x) && (ℝ(y) || ಠ_ಠ(y))) return numericDistance(x, y || 0);
-    if (𝕊(x) && (𝕊(y) || ಠ_ಠ(y))) return levenshteinDistance(x, y || "");
-    throw new Error(`cannot compare types: ${typeof x}, ${typeof y}`);
-  };
+  const Δ = (x, y) =>
+    (ℝ(x) && (ℝ(y) || ಠ_ಠ(y))) ? numericDistance(x, y || 0) :
+    (𝕊(x) && (𝕊(y) || ಠ_ಠ(y))) ? levenshteinDistance(x, y || "") :
+    ǃ(`Δ cannot compare types: ${typeof x}, ${typeof y}`);
 
   const extract = (object, property) => {
     const x = object[property];
@@ -47,8 +48,8 @@
   const extend = select => new Proxy(select, {
     get: (f, property, _2) =>
       property === "β" ? (...args) => extend(arg => f(arg)(...args)) :
-      property === "ñ" ? extend(arg => ñ(f(arg))) :
-                         extend(arg => extract(f(arg), property)),
+      property === "ñ" ? extend(ċ(ñ, f)) :
+      extend(arg => extract(f(arg), property)),
     apply: (f, _1, args) =>
       args.some(x => x === _)
         ? (...[arg, ...rest]) => f(arg)(...merge(args, rest || []))
@@ -61,19 +62,10 @@
 
   const ñ = f => (...args) => !f(...args);
 
-  const ξ = (x, y) => {
-    if (!ಠ_ಠ(x)) {
-      if (!ಠ_ಠ(y)) {
-        x = Math.ceil(x);
-        y = Math.floor(y);
-        return Math.floor(Math.random() * (y - x)) + x;
-      } else {
-        x = Math.floor(x);
-        return Math.floor(Math.random() * x);
-      }
-    }
-    return Math.random();
-  };
+  const ξ = (x, y) =>
+    ಠ_ಠ(x) ? Math.random() :
+    ಠ_ಠ(y) ? Math.floor(Math.random() * Math.floor(x)) :
+    Math.floor(Math.random() * (Math.floor(y) - Math.ceil(x))) + Math.ceil(x);
 
   const ρ = (renames, source) =>
     Object.keys(source).reduce((dest, key) => {
@@ -84,7 +76,7 @@
   const Γ =
     typeof global !== "undefined" ? global :
     typeof window !== "undefined" ? window :
-                                    this;
+    this;
 
   const walkReduce = (f, acc, xs) =>
     𝔸(xs)
@@ -105,11 +97,15 @@
 
   const 𝔸 = Array.isArray;
 
+  const 𝔽 = x => typeof x === "function";
+
   const 𝕊 = x => typeof x === "string";
 
   const ಠ_ಠ = x => typeof x === "undefined";
 
-  const exported = { _, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊, ಠ_ಠ };
+  const ǃ = x => { throw new Error(x); };
+
+  const exported = { _, ċ, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ };
 
   Object.assign(typeof exports !== "undefined" ? exports : Γ, exported);
 }

@@ -1,8 +1,14 @@
-const { _, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝕊, ಠ_ಠ } = require("../lunacy");
+const { _, ċ, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ } = require("../lunacy");
 
 describe("lunacy", () => {
+  describe("ċ", () => {
+    it("composes a series of functions, applying innermost first", () =>
+      expect(ċ(x => x + 3, x => x * 2, x => x + 1)(4)).toEqual(13));
+    it("returns identity function when given 0 args", () =>
+      expect(ċ()("abc")).toEqual("abc"));
+  });
   describe("β", () => {
-    it("β applies a function", () => {
+    it("applies a function", () => {
       const m = x => () => x * 2;
       expect([1, 2, 3].map(m).map(β)).toEqual([2, 4, 6]);
     });
@@ -10,8 +16,8 @@ describe("lunacy", () => {
       const m = x => y => x * 2 + 1;
       expect([1, 2, 3].map(m).map(β(_, 1))).toEqual([3, 5, 7]);
     });
-    it("β() returns undefined", () =>
-      expect(β()).toBe(undefined));
+    it("raises an error when given 0 args", () =>
+      expect(β).toThrow());
   });
   describe("Δ", () => {
     it("Δ of two numbers returns difference between them", () =>
@@ -127,6 +133,16 @@ describe("lunacy", () => {
       expect(𝔸({})).toBe(false);
     });
   });
+  describe("𝔽", () => {
+    it("identifies functions", () => {
+      expect(𝔽(-135.47)).toBe(false);
+      expect(𝔽(function () {})).toBe(true);
+      expect(𝔽("qwerty")).toBe(false);
+      expect(𝔽(Math.abs)).toBe(true);
+      expect(𝔽({})).toBe(false);
+      expect(𝔽(x => x)).toBe(true);
+    });
+  });
   describe("𝕊", () => {
     it("identifies arrays", () => {
       expect(𝕊("")).toBe(true);
@@ -134,5 +150,18 @@ describe("lunacy", () => {
       expect(𝕊([])).toBe(false);
       expect(𝕊({})).toBe(false);
     });
+  });
+  describe("ಠ_ಠ", () => {
+    it("identifies undefined", () => {
+      expect(ಠ_ಠ({})).toBe(false);
+      expect(ಠ_ಠ(0)).toBe(false);
+      expect(ಠ_ಠ(describe.zzz)).toBe(true);
+      expect(ಠ_ಠ(undefined)).toBe(true);
+      expect(ಠ_ಠ(null)).toBe(false);
+    });
+  });
+  describe("ǃ", () => {
+    it("throws Error", () =>
+      expect(β(ǃ, "fail", _)).toThrow());
   });
 });
