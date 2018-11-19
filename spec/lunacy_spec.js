@@ -1,6 +1,22 @@
-const { _, ċ, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ } = require("../lunacy");
+const { _, ℮, ṛ, ṙ, ċ, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ } = require("../lunacy");
 
 describe("lunacy", () => {
+  describe("℮", () => {
+    it("rounds numbers to nearest integer", () =>
+      expect(℮(14.65)).toEqual(15));
+    it("rounds number to nearest multiple", () =>
+      expect(℮(14.65, 2)).toEqual(14));
+    it("rounds number to nearest fractional multiple", () =>
+      expect(℮(14.65, 0.25)).toEqual(14.75));
+  });
+  describe("ṛ", () => {
+    it("rounds down", () =>
+      expect(ṛ(2.76)).toEqual(2));
+  });
+  describe("ṙ", () => {
+    it("rounds up", () =>
+      expect(ṙ(5.01)).toEqual(6));
+  });
   describe("ċ", () => {
     it("composes a series of functions, applying innermost first", () =>
       expect(ċ(x => x + 3, x => x * 2, x => x + 1)(4)).toEqual(13));
@@ -88,14 +104,6 @@ describe("lunacy", () => {
   describe("Σ", () => {
     it("Σ adds up values in nested arrays", () =>
       expect(Σ(3, 4, [2, 7, [9, 5], 1], 8, [6])).toEqual(45));
-  });
-  describe("℮", () => {
-    it("rounds numbers to nearest integer", () =>
-      expect(℮(14.65)).toEqual(15));
-    it("rounds number to nearest multiple", () =>
-      expect(℮(14.65, 2)).toEqual(14));
-    it("rounds number to nearest fractional multiple", () =>
-      expect(℮(14.65, 0.25)).toEqual(14.75));
   });
   describe("ℝ", () => {
     it("identifies real numbers", () => {

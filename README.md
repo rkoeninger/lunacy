@@ -8,6 +8,12 @@
 ## Examples
 
 ```javascript
+℮(x)              // Math.round(x)
+℮(x, precision)   // Math.round(x / precision) * precision
+
+ṛ(x)              // Math.floor(x)
+ṙ(x)              // Math.ceil(x)
+
 ċ(g, f)           // x => g(f(x))
 
 β(f)              // f()
@@ -50,9 +56,6 @@
 Σ(x, y, z)        // x + y + z
 Σ([x, y, z])      // x + y + z
 
-℮(x)              // Math.round(x)
-℮(x, precision)   // Math.round(x / precision) * precision
-
 ℝ(x)              // typeof x === "number" && isFinite(x)
 ℤ(x)              // ℝ(x) && Number.isInteger(x)
 ℕ(x)              // ℤ(x) && x >= 0
@@ -70,7 +73,7 @@
 Typically, all one must do to engage in lunacy is write:
 
 ```javascript
-const { _, ċ, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ } = require("lunacy");
+const { _, ℮, ṛ, ṙ, ċ, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ } = require("lunacy");
 ```
 
 To avoid naming conflicts, don't use accented or non-latin letters in your own code. Only I'm allowed to do that.

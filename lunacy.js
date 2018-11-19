@@ -1,6 +1,12 @@
 {
   const _ = Symbol("_");
 
+  const ℮ = (x, precision = 1) => Math.round(x / precision) * precision;
+
+  const ṛ = Math.floor;
+
+  const ṙ = Math.ceil;
+
   const ċ = (...fs) => x => fs.reduceRight((x, f) => f(x), x);
 
   const isEmpty = x => !x || x.length < 1;
@@ -64,8 +70,8 @@
 
   const ξ = (x, y) =>
     ಠ_ಠ(x) ? Math.random() :
-    ಠ_ಠ(y) ? Math.floor(Math.random() * Math.floor(x)) :
-    Math.floor(Math.random() * (Math.floor(y) - Math.ceil(x))) + Math.ceil(x);
+    ಠ_ಠ(y) ? ṛ(Math.random() * ṛ(x)) :
+    ṛ(Math.random() * (ṛ(y) - ṙ(x))) + ṙ(x);
 
   const ρ = (renames, source) =>
     Object.keys(source).reduce((dest, key) => {
@@ -87,8 +93,6 @@
 
   const Σ = (...xs) => walkReduce((x, y) => x + y, 0, xs);
 
-  const ℮ = (x, precision = 1) => Math.round(x / precision) * precision;
-
   const ℝ = x => typeof x === "number" && isFinite(x);
 
   const ℤ = x => ℝ(x) && Number.isInteger(x);
@@ -105,7 +109,7 @@
 
   const ǃ = x => { throw new Error(x); };
 
-  const exported = { _, ċ, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℮, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ };
+  const exported = { _, ℮, ṛ, ṙ, ċ, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ };
 
   Object.assign(typeof exports !== "undefined" ? exports : Γ, exported);
 }
