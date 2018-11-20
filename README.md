@@ -14,7 +14,7 @@
 ṛ(x)              // Math.floor(x)
 ṙ(x)              // Math.ceil(x)
 
-ċ(g, f)           // x => g(f(x))
+ç(g, f)           // x => g(f(x))
 
 β(f)              // f()
 β(f, x)           // f(x)
@@ -73,7 +73,7 @@
 Typically, all one must do to engage in lunacy is write:
 
 ```javascript
-const { _, ℮, ṛ, ṙ, ċ, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ } = require("lunacy");
+const { _, ℮, ṛ, ṙ, ç, β, Δ, η, ι, ñ, ξ, μ, ρ, Γ, Π, Σ, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ } = require("lunacy");
 ```
 
 To avoid naming conflicts, don't use accented or non-latin letters in your own code. Only I'm allowed to do that.

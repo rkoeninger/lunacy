@@ -7,7 +7,7 @@
 
   const ṙ = Math.ceil;
 
-  const ċ = (...fs) => x => fs.reduceRight((x, f) => f(x), x);
+  const ç = (...fs) => x => fs.reduceRight((x, f) => f(x), x);
 
   const isEmpty = x => !x || x.length < 1;
 
@@ -54,7 +54,7 @@
   const extend = select => new Proxy(select, {
     get: (f, property, _2) =>
       property === "β" ? (...args) => extend(arg => f(arg)(...args)) :
-      property === "ñ" ? extend(ċ(ñ, f)) :
+      property === "ñ" ? extend(ç(ñ, f)) :
       extend(arg => extract(f(arg), property)),
     apply: (f, _1, args) =>
       args.some(x => x === _)
@@ -72,6 +72,8 @@
     ಠ_ಠ(x) ? Math.random() :
     ಠ_ಠ(y) ? ṛ(Math.random() * ṛ(x)) :
     ṛ(Math.random() * (ṛ(y) - ṙ(x))) + ṙ(x);
+
+  const μ = (...xs) => xs.reduce((x, y) => ({ ...x, ...y }), {});
 
   const ρ = (renames, source) =>
     Object.keys(source).reduce((dest, key) => {
@@ -109,7 +111,7 @@
 
   const ǃ = x => { throw new Error(x); };
 
-  const exported = { _, ℮, ṛ, ṙ, ċ, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ };
+  const exported = { _, ℮, ṛ, ṙ, ç, β, Δ, η, ι, ñ, ξ, μ, ρ, Γ, Π, Σ, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ };
 
   Object.assign(typeof exports !== "undefined" ? exports : Γ, exported);
 }

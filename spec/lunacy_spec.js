@@ -1,4 +1,4 @@
-const { _, ℮, ṛ, ṙ, ċ, β, Δ, η, ι, ñ, ξ, ρ, Γ, Π, Σ, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ } = require("../lunacy");
+const { _, ℮, ṛ, ṙ, ç, β, Δ, η, ι, ñ, ξ, μ, ρ, Γ, Π, Σ, ℝ, ℤ, ℕ, 𝔸, 𝔽, 𝕊, ಠ_ಠ, ǃ } = require("../lunacy");
 
 describe("lunacy", () => {
   describe("℮", () => {
@@ -17,11 +17,11 @@ describe("lunacy", () => {
     it("rounds up", () =>
       expect(ṙ(5.01)).toEqual(6));
   });
-  describe("ċ", () => {
+  describe("ç", () => {
     it("composes a series of functions, applying innermost first", () =>
-      expect(ċ(x => x + 3, x => x * 2, x => x + 1)(4)).toEqual(13));
+      expect(ç(x => x + 3, x => x * 2, x => x + 1)(4)).toEqual(13));
     it("returns identity function when given 0 args", () =>
-      expect(ċ()("abc")).toEqual("abc"));
+      expect(ç()("abc")).toEqual("abc"));
   });
   describe("β", () => {
     it("applies a function", () => {
